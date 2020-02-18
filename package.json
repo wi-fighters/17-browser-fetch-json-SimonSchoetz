@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
     "deploy": "npm run build && gh-pages -d dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch-css": "dart-sass --watch src/styles/main.scss style.css --style compressed"
   },
   "browserslist": [
     "> 1%",
@@ -23,12 +24,13 @@
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
+    "dart-sass": "^1.25.0",
     "file-loader": "^4.2.0",
     "gh-pages": "^2.1.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "postcss-loader": "^3.0.0",
     "resolve-url-loader": "^3.1.0",
     "sass-loader": "^7.2.0",

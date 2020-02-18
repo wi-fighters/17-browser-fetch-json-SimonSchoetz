@@ -28,12 +28,18 @@ recipes.cakes.forEach(el => {
     article.append(pAuthor)
     article.append(pIngr)
 
-    //add content to the elements
-    //create src attribute and add image links to it
-    src.value = image
-    img.setAttributeNode(src)
+    //add content to the elements//create src attribute and add image links to it
+    img.src = image
     pAuthor.append(author)
     h3.append(title)
-    ingredients.forEach(ingr => { pIngr.append(ingr) })
+    for (let i = 0; i < ingredients.length; i++) {
+        if (i < ingredients.length - 1) {
+            //write everything with a comma and space at the end
+            pIngr.append(`${ingredients[i]}, `)
+        } else {
+            //except of the last one
+            pIngr.append(ingredients[i])
+        }
+    }
 
 })
