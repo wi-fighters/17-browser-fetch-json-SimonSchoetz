@@ -5,41 +5,40 @@ import { dataString } from "./data.js"
 const recipes = JSON.parse(dataString);
 // \/ All of your javascript should go here \/
 
-const cakeSection = document.querySelector("#cakes")
-recipes.cakes.forEach(el => {
-    //Get all elements from the objects
-    const author = document.createTextNode(el.author)
-    const title = document.createTextNode(el.title)
-    const ingredients = el.ingredients
-    const image = el.image
+for (let key in recipes) {
+    const section = document.querySelector("#" + key)
 
-    //create html elements
-    const article = document.createElement("article")
-    const img = document.createElement("img")
-    const src = document.createAttribute("src")
-    const h3 = document.createElement("h3")
-    const pAuthor = document.createElement("p")
-    const pIngr = document.createElement("p")
+    recipes[key].forEach(el => {
+        //Get all elements from the objects
+        const author = document.createTextNode(el.author)
+        const title = document.createTextNode(el.title)
+        const ingredients = el.ingredients
+        const image = el.image
 
-    //append all elements
-    cakeSection.append(article)
-    article.append(img)
-    article.append(h3)
-    article.append(pAuthor)
-    article.append(pIngr)
+        //create html elements
+        const article = document.createElement("article")
+        const img = document.createElement("img")
+        const h3 = document.createElement("h3")
+        const pAuthor = document.createElement("p")
+        const pIngr = document.createElement("p")
 
-    //add content to the elements//create src attribute and add image links to it
-    img.src = image
-    pAuthor.append(author)
-    h3.append(title)
-    for (let i = 0; i < ingredients.length; i++) {
-        if (i < ingredients.length - 1) {
-            //write everything with a comma and space at the end
-            pIngr.append(`${ingredients[i]}, `)
-        } else {
-            //except of the last one
-            pIngr.append(ingredients[i])
+        //add content to the elements//create src attribute and add image links to it
+        img.src = image
+        pAuthor.append(author)
+        h3.append(title)
+        for (let j = 0; j < ingredients.length; j++) {
+            if (j < ingredients.length - 1) {
+                //write everything with a comma and space at the end
+                pIngr.append(`${ingredients[j]}, `)
+            } else {
+                //except of the last one
+                pIngr.append(ingredients[j])
+            }
         }
-    }
 
-})
+        //append all elements
+        section.append(article)
+        article.append(img, h3, pAuthor, pIngr)
+    })
+}
+
